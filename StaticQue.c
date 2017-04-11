@@ -55,8 +55,6 @@ void SQ_popque(StaticQue *target)
 {
 	// release
 	target->lckList[target->fifoArr[0]->lckList_idx] = mem_noown;
-	target->fifoArr[0]->lckList_idx = failed;	//  디버그용, 에러 유발
-	target->fifoArr[0] = nullptr;	// 뒤에가면 이거 쓸필요가없음
 
 	//  swap swap
 	target->cnt--;
@@ -64,7 +62,6 @@ void SQ_popque(StaticQue *target)
 	for (uint32_t i = 0; i <= target->cnt; i++)
 	{
 		target->fifoArr[i] = target->fifoArr[i + 1];
-		// whire로 바꾸고 i++혹은 ++i로 바꿀수잇으면 바꾸기
 	}
 	target->fifoArr[target->cnt] = nullptr;
 }
@@ -73,8 +70,6 @@ void SQ_deque(StaticQue *target, uint32_t que_idx)
 {
 	// release
 	target->lckList[target->fifoArr[que_idx]->lckList_idx] = mem_noown;
-	target->fifoArr[que_idx]->lckList_idx = failed;	//  디버그용, 에러 유발
-	target->fifoArr[que_idx] = nullptr;	// 뒤에가면 이거 쓸필요가없음
 
 	//  swap swap
 	target->cnt--;
@@ -82,7 +77,6 @@ void SQ_deque(StaticQue *target, uint32_t que_idx)
 	for (uint32_t i = que_idx; i <= target->cnt; i++)
 	{
 		target->fifoArr[i] = target->fifoArr[i + 1];
-		// whire로 바꾸고 i++혹은 ++i로 바꿀수잇으면 바꾸기
 	}
 	target->fifoArr[target->cnt] = nullptr;
 }
