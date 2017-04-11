@@ -1,5 +1,5 @@
-#StaticQue
-
+StaticQue
+===========
 Queue, FIFO Algorithm for static memory allocation only system, such as tiny keyboard driver or tiny mcu.
 
 2017-04-11 : code created for example keyboard device from now. So I set length 7 or 8 for now.
